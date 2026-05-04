@@ -70,6 +70,13 @@ class RunAgentInputCustom(RunAgentInput):
         ),
     )
     additional_instructions: str | None = None
+    trace_id: str | None = Field(
+        default=None,
+        description=(
+            "Optional trace identifier to enforce run provenance across requests. "
+            "When provided, forwarded as RunConfig.trace_id."
+        ),
+    )
     user_context: dict[str, Any] | None = Field(
         default=None,
         description="Structured context merged into MasterContext.user_context for this run only.",
@@ -86,7 +93,7 @@ class RunAgentInputCustom(RunAgentInput):
     )
     client_config: ClientConfig | None = Field(
         default=None,
-        description="Override client configuration (base_url, api_key, litellm_keys) for this request only.",
+        description="Override client configuration (base_url, api_key, default_headers, litellm_keys) for this request only.",
     )
 
 
@@ -111,6 +118,13 @@ class BaseRequest(BaseModel):
         ),
     )
     additional_instructions: str | None = None
+    trace_id: str | None = Field(
+        default=None,
+        description=(
+            "Optional trace identifier to enforce run provenance across requests. "
+            "When provided, forwarded as RunConfig.trace_id."
+        ),
+    )
     user_context: dict[str, Any] | None = Field(
         default=None,
         description="Structured context merged into MasterContext.user_context for this run only.",
@@ -120,7 +134,7 @@ class BaseRequest(BaseModel):
     )
     client_config: ClientConfig | None = Field(
         default=None,
-        description="Override client configuration (base_url, api_key, litellm_keys) for this request only.",
+        description="Override client configuration (base_url, api_key, default_headers, litellm_keys) for this request only.",
     )
 
 

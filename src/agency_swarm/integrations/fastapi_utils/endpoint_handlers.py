@@ -20,6 +20,7 @@ from agents import (
     ModelSettings,
     OpenAIChatCompletionsModel,
     OpenAIResponsesModel,
+    RunConfig,
     TResponseInputItem,
     output_guardrail,
 )
@@ -261,6 +262,13 @@ def _build_file_upload_client(
     return RequestOverridePolicy(config).build_file_upload_client(agency, recipient_agent=recipient_agent)
 
 
+def _build_run_config(trace_id: str | None) -> RunConfig | None:
+    """Return a run config when request-level trace provenance is provided."""
+    if trace_id is None:
+        return None
+    return RunConfig(trace_id=trace_id)
+
+
 # Non‑streaming response endpoint
 def make_response_endpoint(
     request_model,
@@ -318,6 +326,7 @@ def make_response_endpoint(
                 context_override=request.user_context,
                 additional_instructions=request.additional_instructions,
                 file_ids=combined_file_ids,
+                run_config=_build_run_config(getattr(request, "trace_id", None)),
             )
             # Get only new messages added during this request
             all_messages = agency_instance.thread_manager.get_all_messages()
@@ -452,6 +461,7 @@ def make_stream_endpoint(
                     context_override=request.user_context,
                     additional_instructions=request.additional_instructions,
                     file_ids=combined_file_ids,
+                    run_config=_build_run_config(getattr(request, "trace_id", None)),
                 )
 
                 active_run = ActiveRun(
@@ -721,6 +731,7 @@ def make_agui_chat_endpoint(
                     context_override=request.user_context,
                     additional_instructions=request.additional_instructions,
                     file_ids=combined_file_ids or None,
+                    run_config=_build_run_config(getattr(request, "trace_id", None)),
                 ):
                     agui_event = agui_adapter.openai_to_agui_events(
                         event,

@@ -74,6 +74,12 @@ def test_base_request_client_config_roundtrip() -> None:
     assert request.client_config.default_headers == {"x-test": "1"}
 
 
+def test_base_request_trace_id_roundtrip() -> None:
+    """Base request should preserve an explicit trace identifier for run provenance."""
+    request = BaseRequest(message="Hello", trace_id="trace_req_123")
+    assert request.trace_id == "trace_req_123"
+
+
 def test_request_api_key_allows_client_build_without_env(monkeypatch) -> None:
     """Request api_key should work even if server has no OPENAI_API_KEY."""
     pytest.importorskip("agents")
@@ -326,6 +332,53 @@ async def test_make_response_endpoint_applies_client_config_to_agent_client_sync
     )
 
     assert response["response"] == "ok"
+
+
+@pytest.mark.asyncio
+async def test_make_response_endpoint_passes_trace_id_to_run_config(monkeypatch) -> None:
+    """Request trace_id should map to RunConfig.trace_id for non-streaming calls."""
+    pytest.importorskip("agents")
+
+    from agency_swarm.integrations.fastapi_utils import endpoint_handlers
+    from agency_swarm.integrations.fastapi_utils.endpoint_handlers import make_response_endpoint
+    from agency_swarm.integrations.fastapi_utils.request_models import BaseRequest
+
+    seen_trace_id: str | None = None
+
+    class _ThreadManager:
+        def get_all_messages(self):
+            return []
+
+    class _Response:
+        def __init__(self, final_output):
+            self.final_output = final_output
+
+    class _Agency:
+        def __init__(self):
+            self.agents = {}
+            self.thread_manager = _ThreadManager()
+
+        async def get_response(self, **kwargs):
+            nonlocal seen_trace_id
+            run_config = kwargs.get("run_config")
+            seen_trace_id = getattr(run_config, "trace_id", None)
+            return _Response("ok")
+
+    agency = _Agency()
+
+    def _agency_factory(**_kwargs):
+        return agency
+
+    async def _attach_noop(_agency):
+        return None
+
+    monkeypatch.setattr(endpoint_handlers, "attach_persistent_mcp_servers", _attach_noop)
+    handler = make_response_endpoint(BaseRequest, _agency_factory, verify_token=lambda: None)
+
+    response = await handler(BaseRequest(message="hi", trace_id="trace_req_123"), token=None)
+
+    assert response["response"] == "ok"
+    assert seen_trace_id == "trace_req_123"
 
 
 @pytest.mark.asyncio
@@ -1063,3 +1116,68 @@ async def test_make_stream_endpoint_background_cleanup_without_stream_consumptio
 
     assert released == 1
     assert restored == 1
+
+
+@pytest.mark.asyncio
+async def test_make_stream_endpoint_passes_trace_id_to_run_config(monkeypatch) -> None:
+    """Request trace_id should map to RunConfig.trace_id for streaming calls."""
+    pytest.importorskip("agents")
+
+    from agency_swarm.agent.execution_stream_response import StreamingRunResponse
+    from agency_swarm.integrations.fastapi_utils import endpoint_handlers
+    from agency_swarm.integrations.fastapi_utils.endpoint_handlers import (
+        ActiveRunRegistry,
+        make_stream_endpoint,
+    )
+    from agency_swarm.integrations.fastapi_utils.request_models import BaseRequest
+
+    seen_trace_id: str | None = None
+
+    class _HttpRequest:
+        async def is_disconnected(self) -> bool:
+            return False
+
+    class _ThreadManager:
+        def get_all_messages(self):
+            return []
+
+    class _Agency:
+        def __init__(self):
+            self.thread_manager = _ThreadManager()
+            self.agents = {}
+
+        def get_response_stream(self, **kwargs):
+            nonlocal seen_trace_id
+            run_config = kwargs.get("run_config")
+            seen_trace_id = getattr(run_config, "trace_id", None)
+
+            async def _stream():
+                if False:
+                    yield {}
+
+            return StreamingRunResponse(_stream())
+
+    agency = _Agency()
+
+    def _agency_factory(**_kwargs):
+        return agency
+
+    async def _attach_noop(_agency):
+        return None
+
+    monkeypatch.setattr(endpoint_handlers, "attach_persistent_mcp_servers", _attach_noop)
+    handler = make_stream_endpoint(
+        BaseRequest,
+        _agency_factory,
+        verify_token=lambda: None,
+        run_registry=ActiveRunRegistry(),
+    )
+
+    response = await handler(
+        http_request=_HttpRequest(),
+        request=BaseRequest(message="hello", trace_id="trace_req_456"),
+        token=None,
+    )
+    _ = [chunk async for chunk in response.body_iterator]
+
+    assert seen_trace_id == "trace_req_456"
