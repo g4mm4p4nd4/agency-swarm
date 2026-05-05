@@ -163,6 +163,14 @@ After each meaningful tool call or code edit, validate the result in 1-2 lines a
 - Scope limit: this gate does not apply to docs-only changes, pure unit tests, or integrations fully mocked/patched to avoid real LLM calls.
 - Before asking the user for any key, inspect environment and `.env` to confirm it is actually missing or invalid.
 
+### CI Key Policy (PORAAA-14)
+Three-tier graceful degradation for CI when provider keys (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`) are absent:
+1. **Test-level**: `tests/integration/conftest.py` skips (not fails) when keys missing — collection completes, skipped tests are visible in output.
+2. **Fork repos** (e.g. g4mm4p4nd4/agency-swarm): CI runs `lint` + `typecheck` + unit tests only; no key-dependent coverage. Applies to both PR and push-to-main.
+3. **Upstream repos** (VRSEN/agency-swarm): full coverage with required secrets; hard-fail if keys missing.
+4. **Manual live tests**: `live-openai-tests.yml` is workflow_dispatch only, strict key requirement unchanged.
+Fork detection in workflows uses `github.event.repository.fork` (push) and `github.event.pull_request.head.repo.fork` (PR).
+
 ## Common Commands
 `make format`  # Auto-format and apply safe lint fixes
 `make check`   # Lint + type-check (no tests)

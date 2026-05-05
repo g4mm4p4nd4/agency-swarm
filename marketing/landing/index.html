@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agency Swarm — Stop Running Your Swarm by Hand</title>
+  <meta name="description" content="Agency Swarm gives fleet managers explicit agent-to-agent workflows so orchestration is repeatable, observable, and easier to trust. Built on the OpenAI Agents SDK.">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/" aria-label="Agency Swarm home">
+        <span class="nav-logo-icon" aria-hidden="true">&#127758;</span>
+        <span class="nav-logo-text">Agency Swarm</span>
+      </a>
+      <div class="nav-links">
+        <a href="https://agency-swarm.ai" target="_blank" rel="noopener">Docs</a>
+        <a href="https://github.com/g4mm4p4nd4/agency-swarm" target="_blank" rel="noopener">GitHub</a>
+        <a class="nav-cta" href="#cta">Book a teardown</a>
+      </div>
+      <button type="button" class="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile" hidden>
+      <a href="https://agency-swarm.ai" target="_blank" rel="noopener">Docs</a>
+      <a href="https://github.com/g4mm4p4nd4/agency-swarm" target="_blank" rel="noopener">GitHub</a>
+      <a class="nav-cta" href="#cta">Book a teardown</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-orbit">
+        <div class="hero-node"></div>
+        <div class="hero-node"></div>
+        <div class="hero-node"></div>
+        <div class="hero-edge"></div>
+        <div class="hero-edge"></div>
+        <div class="hero-edge"></div>
+      </div>
+    </div>
+    <div class="container hero-content">
+      <p class="hero-eyebrow">Open-source multi-agent orchestration</p>
+      <h1 class="hero-title">Stop running your swarm by hand.</h1>
+      <p class="hero-subtitle">
+        Agency Swarm gives fleet managers explicit agent-to-agent workflows
+        so orchestration is repeatable, observable, and easier to trust.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="#cta">Book a workflow teardown</a>
+        <a class="btn btn-ghost btn-lg" href="https://github.com/g4mm4p4nd4/agency-swarm" target="_blank" rel="noopener">
+          View the repo on GitHub
+        </a>
+      </div>
+      <p class="hero-micro">Run anchor: <code>20260420T210900Z</code></p>
+    </div>
+  </header>
+
+  <!-- Proof strip -->
+  <section class="proof-strip" aria-label="Trust signals">
+    <div class="container">
+      <ul class="proof-list">
+        <li class="proof-item">
+          <span class="proof-check" aria-hidden="true">&#10003;</span>
+          <span>Built on the OpenAI Agents SDK</span>
+        </li>
+        <li class="proof-item">
+          <span class="proof-check" aria-hidden="true">&#10003;</span>
+          <span>Explicit communication flows between agents</span>
+        </li>
+        <li class="proof-item">
+          <span class="proof-check" aria-hidden="true">&#10003;</span>
+          <span>Type-safe tools with Pydantic validation</span>
+        </li>
+        <li class="proof-item">
+          <span class="proof-check" aria-hidden="true">&#10003;</span>
+          <span>Proof-of-progress commits tied to this launch</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Problem / Solution -->
+  <section class="section problem-solution">
+    <div class="container grid-two">
+      <div class="card card-problem">
+        <span class="card-badge card-badge-problem" aria-hidden="true">&#9888;</span>
+        <h2 class="card-title">The problem</h2>
+        <p class="card-body">
+          If your team is still stitching agent tasks together manually, handoffs break,
+          context gets lost, and operator time keeps climbing.
+        </p>
+        <ul class="card-list">
+          <li>Fragile agent handoffs with no defined contract</li>
+          <li>Hidden state that is hard to observe or replay</li>
+          <li>Repeated manual orchestration work</li>
+        </ul>
+      </div>
+      <div class="card card-solution">
+        <span class="card-badge card-badge-solution" aria-hidden="true">&#8594;</span>
+        <h2 class="card-title">The shift</h2>
+        <p class="card-body">
+          Agency Swarm introduces directional communication flows and structured tooling
+          so agent collaboration is defined upfront, not improvised mid-run.
+        </p>
+        <ul class="card-list">
+          <li>Explicit <code>communication_flows</code> with the <code>&gt;</code> operator</li>
+          <li>Type-safe tools via Pydantic and <code>@function_tool</code></li>
+          <li>Persistent thread callbacks for observable state</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section class="section outcomes" aria-labelledby="outcomes-heading">
+    <div class="container">
+      <h2 id="outcomes-heading" class="section-title">What changes when workflows are explicit</h2>
+      <div class="outcomes-grid">
+        <article class="outcome">
+          <div class="outcome-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="outcome-title">Less repeated manual work</h3>
+          <p class="outcome-body">
+            Define agent relationships once. Run them repeatedly without rewriting coordination logic each time.
+          </p>
+        </article>
+        <article class="outcome">
+          <div class="outcome-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <h3 class="outcome-title">Standardized across teams</h3>
+          <p class="outcome-body">
+            Shared instructions, typed tool contracts, and persistent state make multi-agent workflows portable.
+          </p>
+        </article>
+        <article class="outcome">
+          <div class="outcome-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h3 class="outcome-title">Grounded in explicit contracts</h3>
+          <p class="outcome-body">
+            Tools declare their inputs with Pydantic. Agents declare their communication paths. Behavior is inspectable.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credibility -->
+  <section class="section credibility" aria-labelledby="credibility-heading">
+    <div class="container">
+      <h2 id="credibility-heading" class="section-title">Built in the open</h2>
+      <div class="cred-grid">
+        <div class="cred-item">
+          <span class="cred-num" aria-hidden="true">01</span>
+          <h3 class="cred-title">Open-source framework</h3>
+          <p class="cred-body">Current documentation, active commits, and a public issue tracker you can inspect today.</p>
+        </div>
+        <div class="cred-item">
+          <span class="cred-num" aria-hidden="true">02</span>
+          <h3 class="cred-title">Run anchor</h3>
+          <p class="cred-body">Every claim on this page is scoped to launch run <code>20260420T210900Z</code> against <code>g4mm4p4nd4/agency-swarm</code> on <code>main</code>.</p>
+        </div>
+        <div class="cred-item">
+          <span class="cred-num" aria-hidden="true">03</span>
+          <h3 class="cred-title">OpenAI Agents SDK foundation</h3>
+          <p class="cred-body">Extends the official SDK with structured orchestration, not a replacement that introduces new lock-in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section cta" id="cta" aria-labelledby="cta-heading">
+    <div class="container cta-inner">
+      <h2 id="cta-heading" class="cta-title">Bring one broken workflow.</h2>
+      <p class="cta-body">
+        We will map it to an explicit swarm flow in 20 minutes. No pitch deck. Just working code and a clear handoff plan.
+      </p>
+      <div class="cta-actions">
+        <a class="btn btn-primary btn-xl" href="https://calendly.com/vrsen/ai-readiness-call" target="_blank" rel="noopener">
+          Book a 20-minute teardown
+        </a>
+        <a class="btn btn-ghost btn-xl" href="https://github.com/agency-ai-solutions/agency-starter-template" target="_blank" rel="noopener">
+          Run the starter template
+        </a>
+      </div>
+      <p class="cta-micro">
+        Prefer async? <a href="https://github.com/g4mm4p4nd4/agency-swarm/issues/new" target="_blank" rel="noopener">Open an issue</a> and tag <code>run/20260420T210900Z</code>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">
+        &copy; Agency Swarm contributors. Open source under MIT.
+      </p>
+      <div class="footer-links">
+        <a href="https://agency-swarm.ai" target="_blank" rel="noopener">Documentation</a>
+        <a href="https://github.com/g4mm4p4nd4/agency-swarm" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://discord.gg/cw2xBaWfFM" target="_blank" rel="noopener">Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav-mobile-toggle');
+    const mobileNav = document.getElementById('nav-mobile');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      mobileNav.hidden = expanded;
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
