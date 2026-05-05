@@ -63,6 +63,24 @@ jobs:
       - name: Install dependencies
         run: make sync
 
+      - name: Verify provider keys for coverage run
+        if: github.event_name != 'pull_request' || !github.event.pull_request.head.repo.fork
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          missing_keys=()
+          for key in OPENAI_API_KEY ANTHROPIC_API_KEY; do
+            if [ -z "${!key}" ]; then
+              missing_keys+=("$key")
+            fi
+          done
+
+          if [ "${#missing_keys[@]}" -gt 0 ]; then
+            echo "::error::Missing required provider keys for coverage run: ${missing_keys[*]}"
+            exit 1
+          fi
+
       - name: Run tests with coverage
         if: github.event_name != 'pull_request' || !github.event.pull_request.head.repo.fork
         env:
@@ -89,6 +107,23 @@ jobs:
 
       - name: Install dependencies
         run: make sync
+
+      - name: Verify provider keys for coverage run (3.12)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          missing_keys=()
+          for key in OPENAI_API_KEY ANTHROPIC_API_KEY; do
+            if [ -z "${!key}" ]; then
+              missing_keys+=("$key")
+            fi
+          done
+
+          if [ "${#missing_keys[@]}" -gt 0 ]; then
+            echo "::error::Missing required provider keys for coverage run: ${missing_keys[*]}"
+            exit 1
+          fi
 
       - name: Run tests with coverage (3.12)
         env:

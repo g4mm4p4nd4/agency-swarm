@@ -291,8 +291,9 @@ print("Response:", agency_response.json())
 | `file_ids` | list | No | IDs of already uploaded files to attach. |
 | `file_urls` | object | No | `{filename: url_or_absolute_path}` map. Local paths require `allowed_local_file_dirs` on `run_fastapi`. |
 | `additional_instructions` | string | No | Extra guidance for the current request. |
+| `trace_id` | string | No | Explicit run trace identifier forwarded as `RunConfig.trace_id` for provenance continuity. |
 | `user_context` | object | No | Structured data passed to [Agency Context](/additional-features/agency-context) without exposing it to the LLM. |
-| `client_config` | object | No | Override `base_url` / `api_key` for this request (and optional `litellm_keys` for `litellm/` models). |
+| `client_config` | object | No | Override `base_url` / `api_key` / `default_headers` for this request (and optional `litellm_keys` for `litellm/` models). |
 
 ### How user_context is applied
 - Merges with any `user_context` set on the agency instance.
@@ -304,10 +305,17 @@ print("Response:", agency_response.json())
 - **Custom Model subclasses** are not modified; the request still runs, but the override is skipped.
 - For LiteLLM, you can provide `litellm_keys` to pass different keys per provider. Requires LiteLLM installed.
 
+### How trace_id is applied
+- If provided, FastAPI forwards `trace_id` into `RunConfig.trace_id`.
+- This lets you pin a stable trace across retries and multi-step workflow hops.
+- If omitted, Agency Swarm keeps its default trace behavior.
+
 ### client_config fields
 
 - `base_url` (string, optional): Override the API base URL for this request.
 - `api_key` (string, optional): Override the API key for this request.
+- `default_headers` (object, optional): Per-request OpenAI headers merged onto existing defaults.
+  - Useful for routing and audit metadata such as `x-sandbox-id`, `x-user-id`, and `x-request-id`.
 - `litellm_keys` (object, optional): Only for `litellm/...` models.
   - Map `provider_name` → `api_key`.
   - Example: `{"anthropic": "...", "gemini": "..."}`
@@ -336,6 +344,21 @@ print("Response:", agency_response.json())
     "litellm_keys": {
       "anthropic": "sk-ant-...",
       "gemini": "AIza..."
+    }
+  }
+}
+```
+
+**Trace + sandbox metadata override:**
+
+```json
+{
+  "message": "Continue this fleet run",
+  "trace_id": "trace_fleet_001",
+  "client_config": {
+    "default_headers": {
+      "x-sandbox-id": "sandbox-fleet-a",
+      "x-request-id": "req-42"
     }
   }
 }

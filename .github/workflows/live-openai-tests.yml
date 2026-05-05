@@ -22,6 +22,15 @@ jobs:
       - name: Install dependencies
         run: make sync
 
+      - name: Verify OpenAI key for live run
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "${OPENAI_API_KEY}" ]; then
+            echo "::error::Missing required provider key for live test run: OPENAI_API_KEY"
+            exit 1
+          fi
+
       - name: Run tests with coverage (live OpenAI enabled)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
