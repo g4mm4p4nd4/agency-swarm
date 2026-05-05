@@ -93,7 +93,10 @@ class RunAgentInputCustom(RunAgentInput):
     )
     client_config: ClientConfig | None = Field(
         default=None,
-        description="Override client configuration (base_url, api_key, default_headers, litellm_keys) for this request only.",
+        description=(
+            "Override client configuration "
+            "(base_url, api_key, default_headers, litellm_keys) for this request only."
+        ),
     )
 
 
@@ -134,7 +137,10 @@ class BaseRequest(BaseModel):
     )
     client_config: ClientConfig | None = Field(
         default=None,
-        description="Override client configuration (base_url, api_key, default_headers, litellm_keys) for this request only.",
+        description=(
+            "Override client configuration "
+            "(base_url, api_key, default_headers, litellm_keys) for this request only."
+        ),
     )
 
 
