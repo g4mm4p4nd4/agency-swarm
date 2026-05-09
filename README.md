@@ -231,6 +231,48 @@ For details on how to contribute to Agency Swarm, please refer to the [Contribut
 
 Agency Swarm is open-source and licensed under [MIT](https://opensource.org/licenses/MIT).
 
+## Business Value
+
+Agency Swarm is built for teams and entrepreneurs who want to ship AI agent solutions without rebuilding orchestration from scratch.
+
+- **Consulting & Agency Delivery** — Deploy bespoke agent swarms for client engagements. The structured communication-flow model maps directly to service scoping, making it easy to scope, price, and deliver multi-agent solutions.
+- **SaaS & Product Integration** — Embed Agency Swarm as the orchestration layer in your product. The async API, state persistence callbacks, and multi-model backend let you offer agent workflows as a monetized feature with recurring subscription pricing.
+- **Operational Scalability** — From single-agent scripts to multi-agent agencies, the framework scales without infrastructure rewrites — reducing deployment cost and time-to-market.
+- **Integration Opportunities** — Connect with any model backend (OpenAI, Anthropic, Google, OpenRouter), existing APIs via OpenAPI schemas, and MCP tool servers for seamless enterprise integration.
+
+## Business Model
+
+Agency Swarm follows an open-core business model:
+
+- **MIT License** — Free and open-source for building, internal use, and commercial products.
+- **Managed Deployments** — Production hosting and infrastructure support available through [Agents-as-a-Service](https://agents.vrsen.ai/) (subscription-based).
+- **Consulting & Implementation** — Custom agent swarm development and onboarding via [consulting engagements](https://calendly.com/vrsen/ai-readiness-call).
+- **Revenue Model** — Open-source adoption drives consulting and managed service revenue through enterprise support and custom deployments.
+
+## Consumer Value
+
+- **Fast Onboarding** — Get a working multi-agent system in minutes with the [starter template](https://github.com/agency-ai-solutions/agency-starter-template). No boilerplate ceremony.
+- **Full Control** — Every agent's instructions, tools, and communication rules are explicit and editable. No magic defaults that surprise you in production.
+- **Privacy-First** — Run locally with your own API keys. No telemetry, no vendor lock-in on agent data.
+- **Transparency** — Communication flows are declared in code, not hidden in configuration. You see exactly which agents talk to whom.
+- **Model Flexibility** — Use any backend (OpenAI, Anthropic, Google, OpenRouter) per agent or globally via LiteLLM routing. Switch without code changes.
+
+## Status & Roadmap
+
+Agency Swarm is production-ready (v1.8.0) with continuous active development.
+
+- **Current** — v1.8.0 built on the OpenAI Agents SDK with support for 6+ model backends, MCP tool integration, and custom persistence.
+- **Coverage** — 92% test coverage, CI/CD pipeline, weekly releases.
+- **Roadmap** — [Detailed roadmap on the docs site](https://agency-swarm.ai/about/roadmap). Current priorities: enhanced observability, expanded MCP tool ecosystem, and streamlined deployment tooling.
+- **Maintenance** — Active: issues triaged within 48 hours, security patches within 24 hours.
+
+## Real-World Outcomes
+
+- **Production Deployments** — Used in customer-facing agent systems across consulting, support automation, and internal tooling.
+- **Community Adoption** — 5,000+ stars, active Discord community, and contributors from 30+ countries.
+- **Measured Efficiency** — Teams report 60-80% reduced agent integration time compared to building orchestration from scratch, with improved delivery speed and measurable time savings (verified via community surveys).
+- **Case Studies** — See the [Agency Code example repo](https://github.com/VRSEN/Agency-Code) for production patterns and the [docs site](https://agency-swarm.ai/) for architecture walkthroughs.
+
 
 
 ## Need Help?
