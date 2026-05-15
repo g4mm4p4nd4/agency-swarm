@@ -41,7 +41,7 @@ _EXAMPLES_DIR = os.path.dirname(os.path.abspath(__file__))
 _STDIO_SERVER_PATH = os.path.join(_EXAMPLES_DIR, "utils", "stdio_mcp_server.py")
 _SSE_SERVER_PATH = os.path.join(_EXAMPLES_DIR, "utils", "sse_mcp_server.py")
 
-app_token=os.get...EN")
+app_token=os.getenv("APP_TOKEN")
 if not app_token:
     logger.warning(
         "APP_TOKEN not set. MCP servers will use an empty token for auth — "
