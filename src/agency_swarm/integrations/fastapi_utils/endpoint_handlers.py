@@ -1,5 +1,6 @@
 import asyncio
 import copy
+import hmac
 import json
 import logging
 import threading
@@ -236,7 +237,7 @@ def get_verify_token(app_token):
     async def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):  # noqa: B008
         if app_token is None or app_token == "":
             return None
-        if not credentials or credentials.credentials != app_token:
+        if not credentials or not hmac.compare_digest(credentials.credentials, app_token):
             raise HTTPException(status_code=401, detail="Unauthorized")
         return credentials.credentials
 
@@ -815,10 +816,15 @@ def make_logs_endpoint(request_model, logs_dir: str, verify_token):
 
 
 async def exception_handler(request, exc):
-    error_message = str(exc)
+    """Global exception handler that logs details server-side but returns a safe generic message."""
+    logger.exception("Unhandled exception processing request %s %s", request.method, request.url)
+    detail = "An internal error occurred."
+    # Only expose specific details for known-safe exception types
+    if isinstance(exc, HTTPException):
+        raise  # Let FastAPI's built-in handler deal with HTTPExceptions
     if isinstance(exc, tuple):
-        error_message = str(exc[1]) if len(exc) > 1 else str(exc[0])
-    return JSONResponse(status_code=500, content={"error": error_message})
+        exc = exc[1] if len(exc) > 1 else exc[0]
+    return JSONResponse(status_code=500, content={"error": detail})
 
 
 async def generate_chat_name(

@@ -21,6 +21,7 @@ IF you do not want to run the public MCP server, you can comment out the public_
 """
 
 import asyncio
+import logging
 import os
 import subprocess
 import sys
@@ -31,16 +32,22 @@ from dotenv import load_dotenv
 
 from agency_swarm import Agency, Agent, HostedMCPTool
 
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+
 load_dotenv()
 
 _EXAMPLES_DIR = os.path.dirname(os.path.abspath(__file__))
 _STDIO_SERVER_PATH = os.path.join(_EXAMPLES_DIR, "utils", "stdio_mcp_server.py")
 _SSE_SERVER_PATH = os.path.join(_EXAMPLES_DIR, "utils", "sse_mcp_server.py")
 
-app_token = os.getenv("APP_TOKEN")
+app_token=os.get...EN")
 if not app_token:
-    os.environ["APP_TOKEN"] = "test_token_123"
-    app_token = "test_token_123"
+    logger.warning(
+        "APP_TOKEN not set. MCP servers will use an empty token for auth — "
+        "set APP_TOKEN in your .env file for production use."
+    )
+    app_token = ""
 
 stdio_server = MCPServerStdio(
     MCPServerStdioParams(command=sys.executable, args=[_STDIO_SERVER_PATH], env={"APP_TOKEN": app_token}),

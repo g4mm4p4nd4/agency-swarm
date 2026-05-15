@@ -60,6 +60,8 @@ def run_fastapi(
         import uvicorn
         from fastapi import FastAPI
         from fastapi.middleware.cors import CORSMiddleware
+        from fastapi.responses import JSONResponse
+        from starlette.middleware.base import BaseHTTPMiddleware
 
         from .fastapi_utils.endpoint_handlers import (
             ActiveRunRegistry,
@@ -104,6 +106,21 @@ def run_fastapi(
 
     app = FastAPI(servers=[{"url": base_url}])
     app.state.verify_token = verify_token
+
+    # Add request body size limit (10 MB) as a defense-in-depth measure
+    MAX_BODY_SIZE = 10 * 1024 * 1024
+
+    class RequestBodySizeMiddleware(BaseHTTPMiddleware):
+        async def dispatch(self, request, call_next):
+            content_length = request.headers.get("content-length")
+            if content_length and int(content_length) > MAX_BODY_SIZE:
+                return JSONResponse(
+                    status_code=413,
+                    content={"error": f"Request body too large. Max size: {MAX_BODY_SIZE // (1024 * 1024)} MB"},
+                )
+            return await call_next(request)
+
+    app.add_middleware(RequestBodySizeMiddleware)
 
     # Setup logging if enabled
     if enable_logging:
@@ -224,6 +241,17 @@ def run_fastapi(
 
         logger.info(f"📋 Tool schemas available at: {base_url}/openapi.json")
         logger.info(f"   Or use: ToolFactory.get_openapi_schema(tools, '{base_url}') for programmatic access")
+
+    # Add health check endpoint (no auth required — used by load balancers / orchestrators)
+    @app.get("/health")
+    async def health():
+        from datetime import datetime, timezone
+
+        return {
+            "status": "ok",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "application": "agency-swarm",
+        }
 
     app.add_exception_handler(Exception, exception_handler)
 
