@@ -110,6 +110,12 @@ venv.bak/
 .venv39
 .venv_res
 
+# Paperclip framework metadata
+paperclip/*
+!paperclip/operating-contract/
+!paperclip/operating-contract/**
+paperclip/operating-contract/.paperclip-generated
+
 # Spyder project settings
 .spyderproject
 .spyproject

@@ -1,0 +1,607 @@
+schema: "paperclip/v1"
+company:
+  requireBoardApprovalForNewAgents: true
+goals:
+  commercialize-agency-swarm-for-verifiable-ai-agent-workflows:
+    level: "company"
+    status: "active"
+  ship-agency-swarm-feature-delta-and-release-readiness:
+    level: "team"
+    status: "active"
+    parentSlug: "commercialize-agency-swarm-for-verifiable-ai-agent-workflows"
+agents:
+  release-manager:
+    role: "devops"
+    capabilities: "Push-on-green discipline, merge gating, and release notes."
+    adapter:
+      type: "hermes_local"
+      config:
+        cwd: "/Users/mnm/Documents/Github/agency-swarm"
+        yolo: true
+        model: "deepseek-v4-flash"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/paperclip-backend-api-security"
+            - "paperclipai/paperclip/paperclip-integration-engineer"
+            - "local/cf16225131/canary"
+            - "local/8758fff25d/careful"
+            - "local/535fe0df0a/checkpoint"
+            - "local/d01e49c0e5/document-release"
+            - "local/8a417558ce/guard"
+            - "local/9fdd2ce78e/health"
+            - "local/5e3a83858b/land-and-deploy"
+            - "local/739f15dac7/release"
+            - "local/16b90dd0b2/release-changelog"
+            - "local/d05249108a/review"
+            - "local/2787520dce/setup-deploy"
+            - "local/50466581c7/ship"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/f2e8e27c-febd-46b9-8a0b-8fced0a645d9/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/f2e8e27c-febd-46b9-8a0b-8fced0a645d9/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+        dangerouslyBypassApprovalsAndSandbox: true
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: false
+    metadata:
+      portfolioDispatch:
+        run_id: "20260420T210900Z"
+        dispatch_hash: "8de5fdff66dd2a93821cf034169c40a830cd82ea28b97b1107b613ea132049cf"
+        target_repo_ref: "main"
+        dossier_gate_status: "APPROVED_DISTINCT_RESKIN"
+        source_dispatch_path: "/Users/mnm/Documents/Github/portfolio-os/data/dispatch/outbox/dispatch_20260420T210900Z.json"
+        suggested_branch_name: "run/20260420T210900Z/bootstrap"
+        target_repo_full_name: "g4mm4p4nd4/agency-swarm"
+        selection_snapshot_hash: "221995c4e0868778d03c45858cb1730a6a928a3eb937546fc6853ec440af56b0"
+        dossier_freshness_status: "fresh"
+        selected_repo_dossier_hash: "e414be50312b6e8ccd9067c30c5bf866622476e16efc29624d76b2c21ea5bcab"
+        selected_repo_dossier_path: "/Users/mnm/Documents/Github/portfolio-os/docs/launch_scaffolds/2026-04-20/agency-swarm-main/selected_repo_dossier.json"
+      ventureTargetRepo: "g4mm4p4nd4/agency-swarm"
+  engineer-2:
+    role: "engineer"
+    capabilities: "Parallel implementation and support for the target repository."
+    adapter:
+      type: "hermes_local"
+      config:
+        cwd: "/Users/mnm/Documents/Github/agency-swarm"
+        yolo: true
+        model: "deepseek-v4-flash"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/paperclip-frontend-experience"
+            - "paperclipai/paperclip/paperclip-backend-api-security"
+            - "paperclipai/paperclip/paperclip-integration-engineer"
+            - "paperclipai/paperclip/paperclip-create-plugin"
+            - "local/4943a0d43c/benchmark"
+            - "local/6d1fe8a7e7/browse"
+            - "local/535fe0df0a/checkpoint"
+            - "local/9fdd2ce78e/health"
+            - "local/005bdd872e/investigate"
+            - "local/06ee2e3f7e/repo-clean-sync"
+            - "local/d05249108a/review"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/aa5e68a3-62bf-463b-a379-837ef7b3d972/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/aa5e68a3-62bf-463b-a379-837ef7b3d972/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+        dangerouslyBypassApprovalsAndSandbox: true
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: false
+    metadata:
+      portfolioDispatch:
+        run_id: "20260420T210900Z"
+        dispatch_hash: "8de5fdff66dd2a93821cf034169c40a830cd82ea28b97b1107b613ea132049cf"
+        target_repo_ref: "main"
+        dossier_gate_status: "APPROVED_DISTINCT_RESKIN"
+        source_dispatch_path: "/Users/mnm/Documents/Github/portfolio-os/data/dispatch/outbox/dispatch_20260420T210900Z.json"
+        suggested_branch_name: "run/20260420T210900Z/bootstrap"
+        target_repo_full_name: "g4mm4p4nd4/agency-swarm"
+        selection_snapshot_hash: "221995c4e0868778d03c45858cb1730a6a928a3eb937546fc6853ec440af56b0"
+        dossier_freshness_status: "fresh"
+        selected_repo_dossier_hash: "e414be50312b6e8ccd9067c30c5bf866622476e16efc29624d76b2c21ea5bcab"
+        selected_repo_dossier_path: "/Users/mnm/Documents/Github/portfolio-os/docs/launch_scaffolds/2026-04-20/agency-swarm-main/selected_repo_dossier.json"
+      ventureTargetRepo: "g4mm4p4nd4/agency-swarm"
+  growth-distribution:
+    role: "general"
+    capabilities: "Distribution, outreach, and launch amplification."
+    adapter:
+      type: "hermes_local"
+      config:
+        cwd: "/Users/mnm/Documents/Github/agency-swarm"
+        yolo: true
+        model: "deepseek-v4-flash"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/para-memory-files"
+            - "local/6f4a392ef9/analytics-tracking"
+            - "local/32b0cd1fcf/brand-manifesto"
+            - "local/4f71a3faa8/business-forced-choice"
+            - "local/7592382217/distribution-spine"
+            - "local/ed92b9ae81/evidence-factory"
+            - "local/6b70682bef/market-signal-scout"
+            - "local/8942d2df84/office-hours"
+            - "local/44ed9dbece/product-launch"
+            - "local/37027e43f5/repo-opportunity-analyst"
+            - "local/c9cbc97eab/thought-leadership-ghostwriter"
+            - "local/f2c27366ec/trust-packet"
+            - "local/3334faefb5/voc-research-miner"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/fdddf34b-a29a-4b0e-89a1-ea137c195d15/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/fdddf34b-a29a-4b0e-89a1-ea137c195d15/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+        dangerouslyBypassApprovalsAndSandbox: true
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: false
+    metadata:
+      portfolioDispatch:
+        run_id: "20260420T210900Z"
+        dispatch_hash: "8de5fdff66dd2a93821cf034169c40a830cd82ea28b97b1107b613ea132049cf"
+        target_repo_ref: "main"
+        dossier_gate_status: "APPROVED_DISTINCT_RESKIN"
+        source_dispatch_path: "/Users/mnm/Documents/Github/portfolio-os/data/dispatch/outbox/dispatch_20260420T210900Z.json"
+        suggested_branch_name: "run/20260420T210900Z/bootstrap"
+        target_repo_full_name: "g4mm4p4nd4/agency-swarm"
+        selection_snapshot_hash: "221995c4e0868778d03c45858cb1730a6a928a3eb937546fc6853ec440af56b0"
+        dossier_freshness_status: "fresh"
+        selected_repo_dossier_hash: "e414be50312b6e8ccd9067c30c5bf866622476e16efc29624d76b2c21ea5bcab"
+        selected_repo_dossier_path: "/Users/mnm/Documents/Github/portfolio-os/docs/launch_scaffolds/2026-04-20/agency-swarm-main/selected_repo_dossier.json"
+      ventureTargetRepo: "g4mm4p4nd4/agency-swarm"
+  designer-copy:
+    role: "designer"
+    capabilities: "Landing pages, copy, and creative execution assets."
+    adapter:
+      type: "hermes_local"
+      config:
+        cwd: "/Users/mnm/Documents/Github/agency-swarm"
+        yolo: true
+        model: "kimi-k2.6"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-frontend-experience"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/para-memory-files"
+            - "local/d3d63dbe36/3d-web-experience"
+            - "local/7fa0bdc9d9/design-consultation"
+            - "local/525d4620f6/design-guide"
+            - "local/347318d6be/design-html"
+            - "local/2209b327b6/design-review"
+            - "local/97da5264e2/design-shotgun"
+            - "local/fe2a04b201/frontend-design"
+            - "local/f0ac62e1e0/gold-standard-website"
+            - "local/e0365e4c55/interaction-choreography"
+            - "local/48cf46b635/interaction-design"
+            - "local/0b229bd435/visual-alchemist"
+            - "local/9cc6b1d2e2/web-animation"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/78df8bf8-508e-4088-8f93-c9dcc113bc17/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/78df8bf8-508e-4088-8f93-c9dcc113bc17/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+        dangerouslyBypassApprovalsAndSandbox: true
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: false
+    metadata:
+      portfolioDispatch:
+        run_id: "20260420T210900Z"
+        dispatch_hash: "8de5fdff66dd2a93821cf034169c40a830cd82ea28b97b1107b613ea132049cf"
+        target_repo_ref: "main"
+        dossier_gate_status: "APPROVED_DISTINCT_RESKIN"
+        source_dispatch_path: "/Users/mnm/Documents/Github/portfolio-os/data/dispatch/outbox/dispatch_20260420T210900Z.json"
+        suggested_branch_name: "run/20260420T210900Z/bootstrap"
+        target_repo_full_name: "g4mm4p4nd4/agency-swarm"
+        selection_snapshot_hash: "221995c4e0868778d03c45858cb1730a6a928a3eb937546fc6853ec440af56b0"
+        dossier_freshness_status: "fresh"
+        selected_repo_dossier_hash: "e414be50312b6e8ccd9067c30c5bf866622476e16efc29624d76b2c21ea5bcab"
+        selected_repo_dossier_path: "/Users/mnm/Documents/Github/portfolio-os/docs/launch_scaffolds/2026-04-20/agency-swarm-main/selected_repo_dossier.json"
+      ventureTargetRepo: "g4mm4p4nd4/agency-swarm"
+  qa:
+    role: "qa"
+    capabilities: "Browser QA, regression checks, and release verification."
+    adapter:
+      type: "hermes_local"
+      config:
+        cwd: "/Users/mnm/Documents/Github/agency-swarm"
+        yolo: true
+        model: "deepseek-v4-flash"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/paperclip-frontend-experience"
+            - "paperclipai/paperclip/paperclip-backend-api-security"
+            - "local/4943a0d43c/benchmark"
+            - "local/6d1fe8a7e7/browse"
+            - "local/cf16225131/canary"
+            - "local/535fe0df0a/checkpoint"
+            - "local/005bdd872e/investigate"
+            - "local/4cc6d64923/qa"
+            - "local/0085d820ce/qa-only"
+            - "local/d05249108a/review"
+            - "local/ca3528c084/setup-browser-cookies"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/38d34aaa-3e90-4ee1-ab36-6f4c914c70ba/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/38d34aaa-3e90-4ee1-ab36-6f4c914c70ba/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+        dangerouslyBypassApprovalsAndSandbox: true
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: false
+    metadata:
+      portfolioDispatch:
+        run_id: "20260420T210900Z"
+        dispatch_hash: "8de5fdff66dd2a93821cf034169c40a830cd82ea28b97b1107b613ea132049cf"
+        target_repo_ref: "main"
+        dossier_gate_status: "APPROVED_DISTINCT_RESKIN"
+        source_dispatch_path: "/Users/mnm/Documents/Github/portfolio-os/data/dispatch/outbox/dispatch_20260420T210900Z.json"
+        suggested_branch_name: "run/20260420T210900Z/bootstrap"
+        target_repo_full_name: "g4mm4p4nd4/agency-swarm"
+        selection_snapshot_hash: "221995c4e0868778d03c45858cb1730a6a928a3eb937546fc6853ec440af56b0"
+        dossier_freshness_status: "fresh"
+        selected_repo_dossier_hash: "e414be50312b6e8ccd9067c30c5bf866622476e16efc29624d76b2c21ea5bcab"
+        selected_repo_dossier_path: "/Users/mnm/Documents/Github/portfolio-os/docs/launch_scaffolds/2026-04-20/agency-swarm-main/selected_repo_dossier.json"
+      ventureTargetRepo: "g4mm4p4nd4/agency-swarm"
+  ceo:
+    role: "ceo"
+    capabilities: "Strategy, wedge acceptance, and launch execution governance."
+    adapter:
+      type: "hermes_local"
+      config:
+        cwd: "/Users/mnm/Documents/Github/agency-swarm"
+        yolo: true
+        model: "deepseek-v4-pro"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-create-agent"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/paperclip-go-to-market"
+            - "paperclipai/paperclip/para-memory-files"
+            - "local/6f4a392ef9/analytics-tracking"
+            - "local/d92504ffac/autoplan"
+            - "local/4f71a3faa8/business-forced-choice"
+            - "local/ed92b9ae81/evidence-factory"
+            - "local/6b70682bef/market-signal-scout"
+            - "local/8942d2df84/office-hours"
+            - "local/2026f30992/opportunity-council"
+            - "local/ff78d86e76/plan-ceo-review"
+            - "local/37027e43f5/repo-opportunity-analyst"
+            - "local/8607697de0/repo-opportunity-thesis"
+            - "local/f2c27366ec/trust-packet"
+            - "local/3334faefb5/voc-research-miner"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/0202003d-dab3-44ee-bb1e-00a356f81f7f/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/0202003d-dab3-44ee-bb1e-00a356f81f7f/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+        dangerouslyBypassApprovalsAndSandbox: true
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: true
+    metadata:
+      portfolioDispatch:
+        run_id: "20260420T210900Z"
+        dispatch_hash: "8de5fdff66dd2a93821cf034169c40a830cd82ea28b97b1107b613ea132049cf"
+        target_repo_ref: "main"
+        dossier_gate_status: "APPROVED_DISTINCT_RESKIN"
+        source_dispatch_path: "/Users/mnm/Documents/Github/portfolio-os/data/dispatch/outbox/dispatch_20260420T210900Z.json"
+        suggested_branch_name: "run/20260420T210900Z/bootstrap"
+        target_repo_full_name: "g4mm4p4nd4/agency-swarm"
+        selection_snapshot_hash: "221995c4e0868778d03c45858cb1730a6a928a3eb937546fc6853ec440af56b0"
+        dossier_freshness_status: "fresh"
+        selected_repo_dossier_hash: "e414be50312b6e8ccd9067c30c5bf866622476e16efc29624d76b2c21ea5bcab"
+        selected_repo_dossier_path: "/Users/mnm/Documents/Github/portfolio-os/docs/launch_scaffolds/2026-04-20/agency-swarm-main/selected_repo_dossier.json"
+      ventureTargetRepo: "g4mm4p4nd4/agency-swarm"
+  cmo:
+    role: "cmo"
+    capabilities: "Positioning, launch messaging, and demand creation."
+    adapter:
+      type: "hermes_local"
+      config:
+        cwd: "/Users/mnm/Documents/Github/agency-swarm"
+        yolo: true
+        model: "kimi-k2.6"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/paperclip-go-to-market"
+            - "paperclipai/paperclip/para-memory-files"
+            - "local/6f4a392ef9/analytics-tracking"
+            - "local/045bf36aa3/b2b-case-study-journalist"
+            - "local/32b0cd1fcf/brand-manifesto"
+            - "local/4f71a3faa8/business-forced-choice"
+            - "local/7592382217/distribution-spine"
+            - "local/ed92b9ae81/evidence-factory"
+            - "local/1db9e425e6/long-form-sales-letter"
+            - "local/d41ab833b4/marketing-psychology"
+            - "local/44ed9dbece/product-launch"
+            - "local/8aa1c02715/seo-article-architect"
+            - "local/c9cbc97eab/thought-leadership-ghostwriter"
+            - "local/f2c27366ec/trust-packet"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/6d2d3bed-5f2d-412f-951c-0d0c2a7b841d/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/6d2d3bed-5f2d-412f-951c-0d0c2a7b841d/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+        dangerouslyBypassApprovalsAndSandbox: true
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: false
+    metadata:
+      portfolioDispatch:
+        run_id: "20260420T210900Z"
+        dispatch_hash: "8de5fdff66dd2a93821cf034169c40a830cd82ea28b97b1107b613ea132049cf"
+        target_repo_ref: "main"
+        dossier_gate_status: "APPROVED_DISTINCT_RESKIN"
+        source_dispatch_path: "/Users/mnm/Documents/Github/portfolio-os/data/dispatch/outbox/dispatch_20260420T210900Z.json"
+        suggested_branch_name: "run/20260420T210900Z/bootstrap"
+        target_repo_full_name: "g4mm4p4nd4/agency-swarm"
+        selection_snapshot_hash: "221995c4e0868778d03c45858cb1730a6a928a3eb937546fc6853ec440af56b0"
+        dossier_freshness_status: "fresh"
+        selected_repo_dossier_hash: "e414be50312b6e8ccd9067c30c5bf866622476e16efc29624d76b2c21ea5bcab"
+        selected_repo_dossier_path: "/Users/mnm/Documents/Github/portfolio-os/docs/launch_scaffolds/2026-04-20/agency-swarm-main/selected_repo_dossier.json"
+      ventureTargetRepo: "g4mm4p4nd4/agency-swarm"
+  engineer-1:
+    role: "engineer"
+    capabilities: "Primary implementation owner for the target repository."
+    adapter:
+      type: "hermes_local"
+      config:
+        cwd: "/Users/mnm/Documents/Github/agency-swarm"
+        yolo: true
+        model: "deepseek-v4-flash"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/paperclip-frontend-experience"
+            - "paperclipai/paperclip/paperclip-backend-api-security"
+            - "paperclipai/paperclip/paperclip-integration-engineer"
+            - "paperclipai/paperclip/paperclip-create-plugin"
+            - "local/4943a0d43c/benchmark"
+            - "local/6d1fe8a7e7/browse"
+            - "local/535fe0df0a/checkpoint"
+            - "local/9fdd2ce78e/health"
+            - "local/005bdd872e/investigate"
+            - "local/06ee2e3f7e/repo-clean-sync"
+            - "local/d05249108a/review"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/35014584-00ed-4dd1-a822-f6119db5af1d/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/35014584-00ed-4dd1-a822-f6119db5af1d/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+        dangerouslyBypassApprovalsAndSandbox: true
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: false
+    metadata:
+      portfolioDispatch:
+        run_id: "20260420T210900Z"
+        dispatch_hash: "8de5fdff66dd2a93821cf034169c40a830cd82ea28b97b1107b613ea132049cf"
+        target_repo_ref: "main"
+        dossier_gate_status: "APPROVED_DISTINCT_RESKIN"
+        source_dispatch_path: "/Users/mnm/Documents/Github/portfolio-os/data/dispatch/outbox/dispatch_20260420T210900Z.json"
+        suggested_branch_name: "run/20260420T210900Z/bootstrap"
+        target_repo_full_name: "g4mm4p4nd4/agency-swarm"
+        selection_snapshot_hash: "221995c4e0868778d03c45858cb1730a6a928a3eb937546fc6853ec440af56b0"
+        dossier_freshness_status: "fresh"
+        selected_repo_dossier_hash: "e414be50312b6e8ccd9067c30c5bf866622476e16efc29624d76b2c21ea5bcab"
+        selected_repo_dossier_path: "/Users/mnm/Documents/Github/portfolio-os/docs/launch_scaffolds/2026-04-20/agency-swarm-main/selected_repo_dossier.json"
+      ventureTargetRepo: "g4mm4p4nd4/agency-swarm"
+  cto:
+    role: "cto"
+    capabilities: "Architecture planning, branch strategy, and engineering milestones."
+    adapter:
+      type: "hermes_local"
+      config:
+        cwd: "/Users/mnm/Documents/Github/agency-swarm"
+        yolo: true
+        model: "deepseek-v4-pro"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/paperclip-backend-api-security"
+            - "paperclipai/paperclip/paperclip-frontend-experience"
+            - "paperclipai/paperclip/paperclip-integration-engineer"
+            - "paperclipai/paperclip/paperclip-create-agent"
+            - "paperclipai/paperclip/paperclip-create-plugin"
+            - "local/4943a0d43c/benchmark"
+            - "local/535fe0df0a/checkpoint"
+            - "local/9fdd2ce78e/health"
+            - "local/005bdd872e/investigate"
+            - "local/cf48ce30a5/plan-eng-review"
+            - "local/06ee2e3f7e/repo-clean-sync"
+            - "local/d05249108a/review"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/32c0b79f-44b6-4767-9f2e-521ddabe6710/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/32c0b79f-44b6-4767-9f2e-521ddabe6710/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+        dangerouslyBypassApprovalsAndSandbox: true
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: false
+    metadata:
+      portfolioDispatch:
+        run_id: "20260420T210900Z"
+        dispatch_hash: "8de5fdff66dd2a93821cf034169c40a830cd82ea28b97b1107b613ea132049cf"
+        target_repo_ref: "main"
+        dossier_gate_status: "APPROVED_DISTINCT_RESKIN"
+        source_dispatch_path: "/Users/mnm/Documents/Github/portfolio-os/data/dispatch/outbox/dispatch_20260420T210900Z.json"
+        suggested_branch_name: "run/20260420T210900Z/bootstrap"
+        target_repo_full_name: "g4mm4p4nd4/agency-swarm"
+        selection_snapshot_hash: "221995c4e0868778d03c45858cb1730a6a928a3eb937546fc6853ec440af56b0"
+        dossier_freshness_status: "fresh"
+        selected_repo_dossier_hash: "e414be50312b6e8ccd9067c30c5bf866622476e16efc29624d76b2c21ea5bcab"
+        selected_repo_dossier_path: "/Users/mnm/Documents/Github/portfolio-os/docs/launch_scaffolds/2026-04-20/agency-swarm-main/selected_repo_dossier.json"
+      ventureTargetRepo: "g4mm4p4nd4/agency-swarm"
+  chief-of-staff:
+    role: "pm"
+    capabilities: "Sole owner for operating-contract remediation, drift-triggered review, goal-alignment tracking, org oversight, department-lead hiring coordination, leadership cadence, and queue unblocking for this company."
+    adapter:
+      type: "hermes_local"
+      config:
+        model: "deepseek-v4-pro"
+        provider: "auto"
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/paperclip-go-to-market"
+            - "paperclipai/paperclip/para-memory-files"
+            - "local/d92504ffac/autoplan"
+            - "local/4f71a3faa8/business-forced-choice"
+            - "local/535fe0df0a/checkpoint"
+            - "local/ed92b9ae81/evidence-factory"
+            - "local/6b70682bef/market-signal-scout"
+            - "local/8942d2df84/office-hours"
+            - "local/ff78d86e76/plan-ceo-review"
+            - "local/e77baca439/plan-design-review"
+            - "local/2856d4bbd9/plan-devex-review"
+            - "local/cf48ce30a5/plan-eng-review"
+            - "local/37027e43f5/repo-opportunity-analyst"
+            - "local/8607697de0/repo-opportunity-thesis"
+            - "local/f2c27366ec/trust-packet"
+            - "local/3334faefb5/voc-research-miner"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/b73d36fc-362a-4efa-8e3f-2b1401152db5/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/b73d36fc-362a-4efa-8e3f-2b1401152db5/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 7200
+        wakeOnDemand: true
+    permissions:
+      canCreateAgents: true
+  skill-curator:
+    role: "skill_curator"
+    capabilities: "Keeps company skills shared, current, and assigned to agents by role and task."
+    adapter:
+      type: "hermes_local"
+      config:
+        yolo: true
+        model: "qwen3.5-plus"
+        provider: "auto"
+        checkpoints: true
+        paperclipSkillSync:
+          desiredSkills:
+            - "paperclipai/paperclip/paperclip"
+            - "paperclipai/paperclip/paperclip-create-agent"
+            - "paperclipai/paperclip/paperclip-product-scope"
+            - "paperclipai/paperclip/para-memory-files"
+            - "local/535fe0df0a/checkpoint"
+            - "local/9fdd2ce78e/health"
+            - "local/005bdd872e/investigate"
+            - "local/d05249108a/review"
+        instructionsFilePath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/8b565e2f-c64e-4b82-b321-4d7dd06f93e8/instructions/AGENTS.md"
+        instructionsRootPath: "/Users/mnm/Documents/Github/.paperclip/portfolio-os-cockpit/instances/default/companies/216897d4-0f94-4736-9b6b-a20c8e48d694/agents/8b565e2f-c64e-4b82-b321-4d7dd06f93e8/instructions"
+        instructionsEntryFile: "AGENTS.md"
+        instructionsBundleMode: "managed"
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 5
+    permissions:
+      canCreateAgents: true
+projects:
+  run-20260420t210900z-g4mm4p4nd4-agency-swarm:
+    goalSlugs:
+      - "ship-agency-swarm-feature-delta-and-release-readiness"
+    color: "#6366f1"
+    status: "planned"
+    workspaces:
+      -
+        key: "target-repo"
+        name: "Target Repo"
+        sourceType: "git_repo"
+        repoUrl: "https://github.com/g4mm4p4nd4/agency-swarm.git"
+        repoRef: "main"
+        defaultRef: "main"
+        visibility: "default"
+        isPrimary: true
+      -
+        key: "portfolio-os"
+        name: "portfolio-os"
+        sourceType: "git_repo"
+        repoUrl: "https://github.com/g4mm4p4nd4/portfolio-os.git"
+        repoRef: "main"
+        defaultRef: "main"
+        visibility: "default"
+      -
+        key: "paperclip"
+        name: "paperclip"
+        sourceType: "git_repo"
+        repoUrl: "https://github.com/g4mm4p4nd4/paperclip.git"
+        repoRef: "main"
+        defaultRef: "main"
+        visibility: "default"
+      -
+        key: "gstack"
+        name: "gstack"
+        sourceType: "git_repo"
+        repoUrl: "https://github.com/g4mm4p4nd4/gstack.git"
+        repoRef: "main"
+        defaultRef: "main"
+        visibility: "default"
+operatingContract:
+  orgPolicy:
+    chiefOfStaff:
+      enabled: true
+      ceoSlug: "ceo"
+      directReportThreshold: 6
+    goalAlignment:
+      enabled: true
+      requireCeoAlignment: true
+      requireCouncilAlignment: false
+    staleHeartbeatThresholdHours: 72
+    openWorkStaleDays: 7
+routines:
+  operating-contract-drift-monitor:
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "50 */6 * * *"
+        timezone: "America/New_York"
+      -
+        kind: "api"
